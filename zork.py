@@ -16,7 +16,7 @@ class Monster(Observer):
     health = -1.0
 
     def m_attack(self, player):
-        player.hp - self.attack
+        player.hp = player.hp - self.attack
 
 
 class Person(Monster):
