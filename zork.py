@@ -260,7 +260,7 @@ if __name__ == '__main__':
                     print(m.name, m.health)
 
             if command == "Inventory":
-                print "____Player Inventory____"
+                print ("____Player Inventory____")
                 game.p.print_inv()
 
             if command == "Exit":
