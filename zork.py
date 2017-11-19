@@ -227,7 +227,13 @@ if __name__ == '__main__':
             for w in game.p.weapon_list:
                 if weapon == w.name:
                     game.g_attack(monster, w)
+                    #this makes it so it only uses top weapon w/ matching name
+                    break
 
         # Now monsters attack player before player can attack again.
-
+        for monster in game.curr.observers:
+            #this might need to be made as a game function
+            monster.m_attack(g.p)
+            print("____Player Health____")
+            print(g.p.health)
         # Rinse and repeat until only humans or left or player leaves house.
