@@ -208,7 +208,6 @@ class Game(object):
 
     def g_attack(self, g_weapon):
         for m in self.curr.observers:
-            weapon = player.weapon_list(g_weapon)
             # FIX ME: This is where it crashes for some reason.
             self.p.attack(m, weapon)
 
@@ -233,7 +232,8 @@ if __name__ == '__main__':
                 if weapon == w.name:
                     print("_________HERE________")
                     print(w)
-                    game.g_attack(w)
+                    g_weapon = player.weapon_list(g_weapon)
+                    game.g_attack(g_weapon)
 
         # Now monsters attack player before player can attack again.
 
