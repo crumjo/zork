@@ -16,6 +16,9 @@ class Monster(Observable):
     attack = -1
     health = -1
 
+    def m_attack(self, player):
+        player.hp - self.attack
+
 
 class Person(Monster):
     name = "Person"
@@ -82,7 +85,7 @@ class NerdBombs(Weapon):
 
 class Player(object):
     hp = random.randint(100, 125)
-    p_attack = random.randint(10, 20)
+    attack = random.randint(10, 20)
     weapon_list = []
 
     for i in range(0, 10):
@@ -103,6 +106,10 @@ class Player(object):
         if rand == 3:
             nerdBombs = NerdBombs()
             weapon_list.append(nerdBombs)
+
+    def p_attack(self, monster, weapon):
+        monster.health - (weapon.attack_mod * self.attack)
+        monster.update()
 
 
 class Neighborhood(object):
@@ -163,8 +170,9 @@ class Game(object):
     # Check if it is valid move first.
     def go(self, direct):
 
-        print(self.x_pos)
-        print(self.y_pos)
+        # Have to call previous or print in every method.
+        print("Previous X position: " + str(self.x_pos))
+        print("Previous Y position: " + str(self.y_pos))
 
         if direct == "north":
             temp = self.y_pos
@@ -216,3 +224,13 @@ if __name__ == '__main__':
     while game.p.hp != 0:
         direction = input("Enter direction: ")
         home = game.go(direction)
+
+        # TO DO:
+
+        # List all monsters in home here. Has to somehow show all observables for this home.
+
+        # Attack monsters here. Remove monster observables if their health <= 0
+
+        # Now monsters attack player before player can attack again.
+
+        # Rinse and repeat until only humans or left or player leaves house.
