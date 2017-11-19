@@ -107,16 +107,8 @@ class Player(object):
             weapon_list.append(nerdBombs)
 
     def p_attack(self, p_monster, p_weapon):
-        print("____Player attack____")
-        print(self.attack)
-        print("____modifer____")
-        print(p_weapon.attack_mod)
-        print("____before attack____")
-        print(p_monster.health)
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
-        print("____after attack____")
-        print(p_monster.health)
         monster.update()
 
 
@@ -214,9 +206,11 @@ class Game(object):
 
     def g_attack(self, g_weapon):
         for m in self.curr.observers:
-            # FIX ME: This is where it crashes for some reason.
+            print("____before attack____")
+            print(m.health, m.name)
             self.p.p_attack(m, g_weapon)
-
+            print("____after attack____")
+            print(m.health, m.name)
 
 if __name__ == '__main__':
     game = Game(4)
