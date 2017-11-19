@@ -210,7 +210,10 @@ class Game(object):
 
     def g_attack(self, monster, g_weapon):
             self.p.p_attack(monster, g_weapon)
-           
+
+    def humanize(self, monster):
+        self.curr.remove_observer(monster)
+        self.curr.add_observer(person = Person())
 
 if __name__ == '__main__':
     game = Game(4)
@@ -230,7 +233,7 @@ if __name__ == '__main__':
                 print(x.name, x.health)
         if command == "Attack":
             # Attack monsters here. Remove monster observables if their health <= 0
-            print ("Enter weapon: Hershey Kiss, Choclate Bar, Sour Straw, Nerd Bomb")
+            print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
             weapon = input()
             #never updates  uses
             for monster in game.curr.observers:
@@ -239,7 +242,12 @@ if __name__ == '__main__':
                         game.g_attack(monster, w)
                         #this makes it so it only uses top weapon w/ matching name
                         break
-
+                        
+                if(monster.health <= 0):
+                    game.humanize(monster)
+            print("____Monster Health____")
+            for x in game.curr.observers:
+                print(x.name, x.health)
             # Now monsters attack player before player can attack again.
             for monster in game.curr.observers:
                 #this might need to be made as a game function
