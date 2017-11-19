@@ -276,7 +276,7 @@ if __name__ == '__main__':
             #this command crashes it
             if command == "Inventory":
                 print ("____Player Inventory____")
-                game.p.print_inv()
+                game.print_inv()
 
             if command == "Help":
                 print("Navagite your neigherbor hood by typing in the command 'Direction'")
