@@ -241,7 +241,8 @@ if __name__ == '__main__':
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
-                        game.g_attack(monster, w)
+                        if monster.name is not "person"
+                            game.g_attack(monster, w)
                         #this makes it so it only uses top weapon w/ matching name
                         break
                         
@@ -261,8 +262,7 @@ if __name__ == '__main__':
         
         # Rinse and repeat until only humans or left or player leaves house.
 
-        #Menu to get stats,inventory or exit game
-        #needs help funtion added
+        #Menu to get stats,inventory,help or exit game
         if command == "Menu":
             print("Enter command: Stats, Inventory, Help, Exit")
             command = input()
@@ -273,7 +273,6 @@ if __name__ == '__main__':
                 print("____Monster Health____")
                 for m in game.curr.observers:
                     print(m.name, m.health)
-            #this command crashes it
             if command == "Inventory":
                 print ("____Player Inventory____")
                 game.print_inv()
