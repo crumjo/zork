@@ -235,5 +235,5 @@ if __name__ == '__main__':
             #this might need to be made as a game function
             monster.m_attack(game.p)
             print("____Player Health____")
-            print(game.p.health)
+            print(game.p.hp)
         # Rinse and repeat until only humans or left or player leaves house.
