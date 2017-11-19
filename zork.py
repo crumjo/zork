@@ -111,8 +111,11 @@ class Player(object):
         print(self.attack)
         print("____modifer____")
         print(p_weapon.attack_mod)
+        print("____before attack____")
+        print(p_monster.health)
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
+        print("____after attack____")
         print(p_monster.health)
         monster.update()
 
