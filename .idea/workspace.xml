@@ -16,8 +16,8 @@
       <file leaf-file-name="zork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="167" column="25" lean-forward="false" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
+            <state relative-caret-position="255">
+              <caret line="210" column="12" lean-forward="false" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="12" />
               <folding>
                 <element signature="e#25#58#0" expanded="true" />
               </folding>
@@ -178,8 +178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="167" column="25" lean-forward="false" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
+        <state relative-caret-position="255">
+          <caret line="210" column="12" lean-forward="false" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="12" />
           <folding>
             <element signature="e#25#58#0" expanded="true" />
           </folding>

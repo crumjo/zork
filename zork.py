@@ -13,7 +13,7 @@ class House(Observable):
 class Monster(Observer):
     name = ""
     attack = -1
-    health = -1
+    health = -1.0
 
     def m_attack(self, player):
         player.hp - self.attack
@@ -22,31 +22,31 @@ class Monster(Observer):
 class Person(Monster):
     name = "Person"
     attack = -1
-    health = 0
+    health = 0.0
 
 
 class Zombie(Monster):
     name = "Zombie"
     attack = random.randint(0, 10)
-    health = random.randint(50, 100)
+    health = random.randint(50.0, 100.0)
 
 
 class Vampire(Monster):
     name = "Vampire"
     attack = random.randint(10, 20)
-    health = random.randint(100, 200)
+    health = random.randint(100.0, 200.0)
 
 
 class Ghoul(Monster):
     name = "Ghoul"
     attack = random.randint(15, 30)
-    health = random.randint(40, 80)
+    health = random.randint(40.0, 80.0)
 
 
 class Werewolf(Monster):
     name = "Werewolf"
     attack = random.randint(0, 40)
-    health = 200
+    health = 200.0
 
 
 class Weapon(object):
@@ -106,8 +106,11 @@ class Player(object):
             nerdBombs = NerdBombs()
             weapon_list.append(nerdBombs)
 
-    def p_attack(self, monster, weapon):
-        monster.health - (weapon.attack_mod * self.attack)
+    def p_attack(self, p_monster, p_weapon):
+        print("HERE IN P_ATTACK")
+
+        p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+        # Update uses.
         monster.update()
 
 
@@ -203,13 +206,11 @@ class Game(object):
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
 
-    def attack_p(self, weapon):
-        # Attack the player
-        pass
-
-    def attack_m(self):
-        # Attack the monsters
-        pass
+    def g_attack(self, g_weapon):
+        for m in self.curr.observers:
+            
+            # FIX ME: This is where it crashes for some reason.
+            self.p.attack(m, g_weapon)
 
 
 if __name__ == '__main__':
@@ -220,16 +221,19 @@ if __name__ == '__main__':
         direction = input("Enter direction: ")
         game.go(direction)
 
-        # TO DO:
-
-        # List all monsters in home here. Has to somehow show all observables for this home.
+        # Lists all monsters in home.
         print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
         for x in game.curr.observers:
-            print(x.name)
-
-        # print(game.curr.observers)
+            print(x.name, x.health)
 
         # Attack monsters here. Remove monster observables if their health <= 0
+        weapon = input("Enter weapon: ")
+        for monster in game.curr.observers:
+            for w in game.p.weapon_list:
+                if weapon == w.name:
+                    print("_________HERE________")
+                    print(w)
+                    game.g_attack(w)
 
         # Now monsters attack player before player can attack again.
 
