@@ -204,13 +204,9 @@ class Game(object):
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
 
-    def g_attack(self, g_weapon):
-        for m in self.curr.observers:
-            print("____before attack____")
-            print(m.health, m.name)
-            self.p.p_attack(m, g_weapon)
-            print("____after attack____")
-            print(m.health, m.name)
+    def g_attack(self, monster, g_weapon):
+            self.p.p_attack(monster, g_weapon)
+           
 
 if __name__ == '__main__':
     game = Game(4)
@@ -227,9 +223,10 @@ if __name__ == '__main__':
 
         # Attack monsters here. Remove monster observables if their health <= 0
         weapon = input("Enter weapon: ")
-        for w in game.p.weapon_list:
-            if weapon == w.name:
-                game.g_attack(w)
+        for monster in game.curr.observers:
+            for w in game.p.weapon_list:
+                if weapon == w.name:
+                    game.g_attack(monster, w)
 
         # Now monsters attack player before player can attack again.
 
