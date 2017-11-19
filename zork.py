@@ -111,9 +111,6 @@ class Player(object):
         # Update uses.
         monster.update()
 
-    def print_inv(self):
-        for item in weapon_list:
-            print(item.name, item.uses)
 
     
 class Neighborhood(object):
@@ -215,6 +212,10 @@ class Game(object):
         self.curr.remove_observer(monster)
         person = Person()
         self.curr.add_observer(person)
+        
+    def print_inv(self):
+        for item in self.p.weapon_list:
+            print(item.name, item.uses)
 
 if __name__ == '__main__':
     game = Game(4)
@@ -263,7 +264,7 @@ if __name__ == '__main__':
         #Menu to get stats,inventory or exit game
         #needs help funtion added
         if command == "Menu":
-            print("Enter command: Stats, Inventory, Exit")
+            print("Enter command: Stats, Inventory, Help, Exit")
             command = input()
             #prints player and monsters health
             if command == "Stats":
@@ -276,6 +277,16 @@ if __name__ == '__main__':
             if command == "Inventory":
                 print ("____Player Inventory____")
                 game.p.print_inv()
+
+            if command == "Help":
+                print("Navagite your neigherbor hood by typing in the command 'Direction'")
+                print("Then type in one of the directions listed to move if able")
+                print("To attack all the monsters in a house at once use the command 'Attack'")
+                print("Then type in one of the candy weapons you have availble")
+                print("Type 'Menu' for useful information such as your health and inventory")
+                print("Hint some monsters take extra damage from some candy weapons")
+                print("Where other monsters are immune to certain weapons!")
+                
 
             if command == "Exit":
                 sys.exit(0)
