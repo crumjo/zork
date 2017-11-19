@@ -227,10 +227,9 @@ if __name__ == '__main__':
 
         # Attack monsters here. Remove monster observables if their health <= 0
         weapon = input("Enter weapon: ")
-        for monster in game.curr.observers:
-            for w in game.p.weapon_list:
-                if weapon == w.name:
-                    game.g_attack(w)
+        for w in game.p.weapon_list:
+            if weapon == w.name:
+                game.g_attack(w)
 
         # Now monsters attack player before player can attack again.
 
