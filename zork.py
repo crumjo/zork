@@ -108,7 +108,7 @@ class Player(object):
 
     def p_attack(self, p_monster, p_weapon):
         print("HERE IN P_ATTACK")
-
+print(p_weapon)
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
         monster.update()
@@ -208,8 +208,9 @@ class Game(object):
 
     def g_attack(self, g_weapon):
         for m in self.curr.observers:
+		print(g_weapon)
             # FIX ME: This is where it crashes for some reason.
-            self.p.attack(m, weapon)
+            self.p.attack(m, g_weapon)
 
 
 if __name__ == '__main__':
@@ -232,7 +233,6 @@ if __name__ == '__main__':
                 if weapon == w.name:
                     print("_________HERE________")
                     print(w)
-                    g_weapon = game.p.weapon_list(g_weapon)
                     game.g_attack(g_weapon)
 
         # Now monsters attack player before player can attack again.
