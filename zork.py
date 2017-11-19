@@ -107,6 +107,10 @@ class Player(object):
             weapon_list.append(nerdBombs)
 
     def p_attack(self, p_monster, p_weapon):
+        print("____Player attack____")
+        print(self.attack)
+        print("____modifer____")
+        print(p_weapon.attack_mod)
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
         print(p_monster.health)
