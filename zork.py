@@ -211,7 +211,7 @@ class Game(object):
             print(g_weapon)
             print(m)
             # FIX ME: This is where it crashes for some reason.
-            self.p.attack(m, g_weapon)
+            self.p_attack(m, g_weapon)
 
 
 if __name__ == '__main__':
