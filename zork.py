@@ -233,7 +233,7 @@ if __name__ == '__main__':
         # Now monsters attack player before player can attack again.
         for monster in game.curr.observers:
             #this might need to be made as a game function
-            monster.m_attack(g.p)
+            monster.m_attack(game.p)
             print("____Player Health____")
-            print(g.p.health)
+            print(game.p.health)
         # Rinse and repeat until only humans or left or player leaves house.
