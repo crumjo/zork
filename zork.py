@@ -220,7 +220,8 @@ if __name__ == '__main__':
         print("Enter command: Menu, Direction, Attack")
         command = input()
         if command == "Direction":
-            direction = input("Enter direction: North, South, East, West")
+            print("Enter direction: North, South, East, West")
+            direction = input()
             game.go(direction)
 
             # Lists all monsters in home.
@@ -229,7 +230,9 @@ if __name__ == '__main__':
                 print(x.name, x.health)
         if command == "Attack":
             # Attack monsters here. Remove monster observables if their health <= 0
-            weapon = input("Enter weapon: Hershey Kiss, Choclate Bar, Sour Straw, Nerd Bomb")
+            print ("Enter weapon: Hershey Kiss, Choclate Bar, Sour Straw, Nerd Bomb")
+            weapon = input()
+            #never updates  uses
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
@@ -251,7 +254,8 @@ if __name__ == '__main__':
         #Menu to get stats,inventory or exit game
         #needs help funtion added
         if command == "Menu":
-            command = input("Enter command: Stats, Inventory, Exit")
+            print("Enter command: Stats, Inventory, Exit")
+            command = input()
             #prints player and monsters health
             if command == "Stats":
                 print("____Player Health____")
@@ -259,7 +263,7 @@ if __name__ == '__main__':
                 print("____Monster Health____")
                 for m in game.curr.observers:
                     print(m.name, m.health)
-
+            #this command crashes it
             if command == "Inventory":
                 print ("____Player Inventory____")
                 game.p.print_inv()
