@@ -217,7 +217,8 @@ if __name__ == '__main__':
     print("Welcome to Zork!")
 
     while game.p.hp != 0:
-        command = input("Enter command: Menu, Direction, Attack")
+        print("Enter command: Menu, Direction, Attack")
+        command = input()
         if command == "Direction":
             direction = input("Enter direction: North, South, East, West")
             game.go(direction)
