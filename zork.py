@@ -6,12 +6,11 @@ import random
 import sys
 
 
-class House(Observer):
+class House(Observable):
     def update(self, *args, **kwargs):
-        print("Monster Updated.")
+        pass
 
-
-class Monster(Observable):
+class Monster(Observer):
     name = ""
     attack = -1
     health = -1
@@ -117,43 +116,40 @@ class Neighborhood(object):
         self.size = size
         self.grid = [[0 for x in range(size)] for y in range(size)]
 
-    def place_house(self, x, y, house):
-        self.grid[x][y] = house
-
     def fill(self):
         for house in range(0, (self.size * self.size)):
             for x in range(0, self.size):
                 for y in range(0, self.size):
 
                     house = House()
-                    for i in range(0, 9):
+                    for i in range(0, 10):
                         rand = random.randint(0, 4)
                         if rand == 0:
                             person = Person()
-                            person.add_observer(house)
+                            house.add_observer(person)
                             person.update()
 
                         if rand == 1:
                             zombie = Zombie()
-                            zombie.add_observer(house)
+                            house.add_observer(zombie)
                             zombie.update()
 
                         if rand == 2:
                             vampire = Vampire()
-                            vampire.add_observer(house)
+                            house.add_observer(vampire)
                             vampire.update()
 
                         if rand == 3:
                             ghoul = Ghoul()
-                            ghoul.add_observer(house)
+                            house.add_observer(ghoul)
                             ghoul.update()
 
                         if rand == 4:
                             werewolf = Werewolf()
-                            werewolf.add_observer(house)
+                            house.add_observer(werewolf)
                             werewolf.update()
 
-                    self.place_house(x, y, house)
+                    self.grid[x][y] = house
 
 
 class Game(object):
@@ -170,6 +166,8 @@ class Game(object):
     # Check if it is valid move first.
     def go(self, direct):
 
+        # print(self.curr.observers)
+
         # Have to call previous or print in every method.
         print("Previous X position: " + str(self.x_pos))
         print("Previous Y position: " + str(self.y_pos))
@@ -180,9 +178,8 @@ class Game(object):
                 print("No houses to the north.")
             else:
                 self.y_pos = self.y_pos + 1
-                curr = self.nh.grid[self.x_pos][self.y_pos]
+                self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
-                return curr
 
         if direct == "south":
             temp = self.y_pos
@@ -190,9 +187,8 @@ class Game(object):
                 print("No houses to the south.")
             else:
                 self.y_pos = self.y_pos - 1
-                curr = self.nh.grid[self.x_pos][self.y_pos]
+                self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
-                return curr
 
         if direct == "east":
             temp = self.x_pos
@@ -200,9 +196,8 @@ class Game(object):
                 print("No houses to the east.")
             else:
                 self.x_pos = self.x_pos + 1
-                curr = self.nh.grid[self.x_pos][self.y_pos]
+                self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
-                return curr
 
         if direct == "west":
             temp = self.x_pos
@@ -210,11 +205,16 @@ class Game(object):
                 print("No houses to the west.")
             else:
                 self.x_pos = self.x_pos - 1
-                curr = self.nh.grid[self.x_pos][self.y_pos]
+                self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
-                return curr
 
-    # def attack(self, weapon):
+    def attack_p(self, weapon):
+        # Attack the player
+        pass
+
+    def attack_m(self):
+        # Attack the monsters
+        pass
 
 
 if __name__ == '__main__':
@@ -223,11 +223,17 @@ if __name__ == '__main__':
 
     while game.p.hp != 0:
         direction = input("Enter direction: ")
-        home = game.go(direction)
+        game.go(direction)
 
         # TO DO:
 
         # List all monsters in home here. Has to somehow show all observables for this home.
+        print("MONSTERS: ")
+
+        # Why does this not work
+        name = (Monster.name for Monster in game.curr.observers)
+
+        # print(game.curr.observers)
 
         # Attack monsters here. Remove monster observables if their health <= 0
 

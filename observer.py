@@ -7,4 +7,4 @@ class Observer(object):
 
     @abstractmethod
     def update(self, *args, **kwargs):
-        pass
+        print("Monster Updated.")
