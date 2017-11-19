@@ -209,6 +209,7 @@ class Game(object):
     def g_attack(self, g_weapon):
         for m in self.curr.observers:
             print(g_weapon)
+            print(m)
             # FIX ME: This is where it crashes for some reason.
             self.p.attack(m, g_weapon)
 
