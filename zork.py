@@ -208,9 +208,9 @@ class Game(object):
 
     def g_attack(self, g_weapon):
         for m in self.curr.observers:
-            
+            weapon = player.weapon_list(g_weapon)
             # FIX ME: This is where it crashes for some reason.
-            self.p.attack(m, g_weapon)
+            self.p.attack(m, weapon)
 
 
 if __name__ == '__main__':
