@@ -22,7 +22,7 @@ class Monster(Observer):
 class Person(Monster):
     name = "Person"
     attack = -1
-    health = 0.0
+    health = 100.0
 
 
 class Zombie(Monster):
@@ -213,7 +213,8 @@ class Game(object):
 
     def humanize(self, monster):
         self.curr.remove_observer(monster)
-        self.curr.add_observer(person = Person())
+        person = Person()
+        self.curr.add_observer(person)
 
 if __name__ == '__main__':
     game = Game(4)
