@@ -233,7 +233,7 @@ if __name__ == '__main__':
                 if weapon == w.name:
                     print("_________HERE________")
                     print(w)
-                    game.g_attack(g_weapon)
+                    game.g_attack(w)
 
         # Now monsters attack player before player can attack again.
 
