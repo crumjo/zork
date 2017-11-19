@@ -128,6 +128,7 @@ class Neighborhood(object):
                             person = Person()
                             house.add_observer(person)
                             person.update()
+                            print(person.name, person.attack, person.health)
 
                         if rand == 1:
                             zombie = Zombie()
@@ -165,12 +166,6 @@ class Game(object):
 
     # Check if it is valid move first.
     def go(self, direct):
-
-        # print(self.curr.observers)
-
-        # Have to call previous or print in every method.
-        print("Previous X position: " + str(self.x_pos))
-        print("Previous Y position: " + str(self.y_pos))
 
         if direct == "north":
             temp = self.y_pos
@@ -228,10 +223,9 @@ if __name__ == '__main__':
         # TO DO:
 
         # List all monsters in home here. Has to somehow show all observables for this home.
-        print("MONSTERS: ")
-
-        # Why does this not work
-        name = (Monster.name for Monster in game.curr.observers)
+        print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
+        for x in game.curr.observers:
+            print(x.name)
 
         # print(game.curr.observers)
 
