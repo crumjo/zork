@@ -65,19 +65,19 @@ class HersheyKiss(Weapon):
 
 
 class SourStraws(Weapon):
-    name = "Sour Straws"
+    name = "Sour Straw"
     attack_mod = random.uniform(1.0, 1.75)
     uses = 2
 
 
 class ChocolateBars(Weapon):
-    name = "Chocolate Bars"
+    name = "Chocolate Bar"
     attack_mod = random.uniform(2.0, 2.4)
     uses = 4
 
 
 class NerdBombs(Weapon):
-    name = "Nerd Bombs"
+    name = "Nerd Bomb"
     attack_mod = random.uniform(3.5, 5.0)
     uses = 1
 
@@ -111,7 +111,11 @@ class Player(object):
         # Update uses.
         monster.update()
 
+    def print_inv(self):
+        for item in weapon_list:
+            print(item.name, item.uses)
 
+    
 class Neighborhood(object):
     def __init__(self, size):
         self.size = size
@@ -213,27 +217,51 @@ if __name__ == '__main__':
     print("Welcome to Zork!")
 
     while game.p.hp != 0:
-        direction = input("Enter direction: ")
-        game.go(direction)
+        command = input("Enter command: Menu, Direction, Attack")
+        if command == "Direction":
+            direction = input("Enter direction: North, South, East, West")
+            game.go(direction)
 
-        # Lists all monsters in home.
-        print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
-        for x in game.curr.observers:
-            print(x.name, x.health)
+            # Lists all monsters in home.
+            print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
+            for x in game.curr.observers:
+                print(x.name, x.health)
+        if command == "Attack":
+            # Attack monsters here. Remove monster observables if their health <= 0
+            weapon = input("Enter weapon: Hershey Kiss, Choclate Bar, Sour Straw, Nerd Bomb")
+            for monster in game.curr.observers:
+                for w in game.p.weapon_list:
+                    if weapon == w.name:
+                        game.g_attack(monster, w)
+                        #this makes it so it only uses top weapon w/ matching name
+                        break
 
-        # Attack monsters here. Remove monster observables if their health <= 0
-        weapon = input("Enter weapon: ")
-        for monster in game.curr.observers:
-            for w in game.p.weapon_list:
-                if weapon == w.name:
-                    game.g_attack(monster, w)
-                    #this makes it so it only uses top weapon w/ matching name
-                    break
-
-        # Now monsters attack player before player can attack again.
-        for monster in game.curr.observers:
-            #this might need to be made as a game function
-            monster.m_attack(game.p)
+            # Now monsters attack player before player can attack again.
+            for monster in game.curr.observers:
+                #this might need to be made as a game function
+                monster.m_attack(game.p)
+            
             print("____Player Health____")
             print(game.p.hp)
+
+        
         # Rinse and repeat until only humans or left or player leaves house.
+
+        #Menu to get stats,inventory or exit game
+        #needs help funtion added
+        if command == "Menu":
+            command = input("Enter command: Stats, Inventory, Exit")
+            #prints player and monsters health
+            if command == "Stats":
+                print("____Player Health____")
+                print(game.p.hp)
+                print("____Monster Health____")
+                for m in game.curr.observers:
+                    print(m.name, m.health)
+
+            if command == "Inventory":
+                print "____Player Inventory____"
+                game.p.print_inv()
+
+            if command == "Exit":
+                sys.exit(0)
