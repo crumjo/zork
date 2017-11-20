@@ -241,7 +241,7 @@ if __name__ == '__main__':
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
-                        if monster.name is not "person":
+                        if monster.name != "person":
                             game.g_attack(monster, w)
                         #this makes it so it only uses top weapon w/ matching name
                         break
