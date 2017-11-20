@@ -133,7 +133,7 @@ class Player(object):
 
             elif p_monster.name == "Werewolf":
                 monster.update()
-                
+
             else:
                 p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
                 monster.update()
@@ -309,6 +309,9 @@ if __name__ == '__main__':
             if tmp.uses == 0:
                 game.p.weapon_update(tmp)
 
+            print("\n____Player Health____")
+            print(game.p.hp)
+
             print(monster.health, monster.name)
             print("\n____Monster Health____")
                 
@@ -320,9 +323,6 @@ if __name__ == '__main__':
                 for monster in game.curr.observers:
                     # This might need to be made as a game function
                     monster.m_attack(game.p)
-                    
-                print("\n____Player Health____")
-                print(game.p.hp)
                 
             else:
                 print("\n Please enter a valid weapon")
