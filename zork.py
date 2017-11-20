@@ -125,16 +125,20 @@ class Player(object):
         if p_weapon.name == "hershey kiss":
             p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
             monster.update()
+
         elif p_weapon.name == "sour straw":
             if p_monster.name == "Zombie":
                 p_monster.health = p_monster.health - 2 * (p_weapon.attack_mod * self.attack)
                 monster.update()
+
             elif p_monster.name == "Werewolf":
                 monster.update()
+                
             else:
                 p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
                 monster.update()
-        elif p_weapon.name == "choclate bar":
+
+        elif p_weapon.name == "chocolate bar":
             if p_monster.name == "Vampire" or p_monster.name == "Werewolf":
                 monster.update()
             else:
@@ -143,7 +147,7 @@ class Player(object):
         else:
             print("6")
             if p_monster.name == "Ghoul":
-                p_monster.health = p_monster.health - 5 * (p_weapon.attack_mod * self.attack)
+                p_monster.health = p_monster.health - (5 * (p_weapon.attack_mod * self.attack))
                 monster.update()
             else:
                 p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
