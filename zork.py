@@ -3,6 +3,7 @@
 # TO DO:
 # 1. Comments
 # 2. Bug checking.
+# 3. Getters and setters in neighborhood
 
 from observable import Observable
 from observer import Observer
@@ -344,14 +345,20 @@ class Game(object):
                 print(item.get_name(), item.get_uses())
 
     def check_won(self, nh):
+        count = 0
         for x in range(0, nh.size):
             for y in range(0, nh.size):
+                check = 1
                 tmp = nh.grid[x][y]
                 for m in tmp.observers:
-                    if m.name != "Person":
-                        return 0
-                    else:
-                        return 1
+                    if m.get_name() != "Person":
+                        check = 0
+                if check == 1:
+                    count = count + 1
+        print(count)
+        if count == (size * size):
+            return 1
+        return 0
 
 
 if __name__ == '__main__':
