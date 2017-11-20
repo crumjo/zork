@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4dbe966-41d1-4492-aaa9-353b86089df2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observable.py" afterPath="$PROJECT_DIR$/observable.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zork.py" afterPath="$PROJECT_DIR$/zork.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +18,8 @@
       <file leaf-file-name="zork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="210" column="0" lean-forward="false" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+            <state relative-caret-position="1468">
+              <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
               <folding>
                 <element signature="e#25#58#0" expanded="true" />
               </folding>
@@ -31,7 +32,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-              <folding />
+              <folding>
+                <marker date="1511141644000" expanded="true" signature="246:329" ph="..." />
+                <marker date="1511141644000" expanded="true" signature="366:394" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,8 +134,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -163,8 +168,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/zork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="210" column="0" lean-forward="false" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+        <state relative-caret-position="1468">
+          <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
           <folding>
             <element signature="e#25#58#0" expanded="true" />
           </folding>
@@ -175,7 +180,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding />
+          <folding>
+            <marker date="1511141644000" expanded="true" signature="246:329" ph="..." />
+            <marker date="1511141644000" expanded="true" signature="366:394" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -16,13 +16,13 @@ class Monster(Observer):
     health = -1.0
 
     def m_attack(self, player):
-        player.hp - self.attack
+        player.hp = player.hp - self.attack
 
 
 class Person(Monster):
     name = "Person"
     attack = -1
-    health = 0.0
+    health = 100.0
 
 
 class Zombie(Monster):
@@ -65,19 +65,19 @@ class HersheyKiss(Weapon):
 
 
 class SourStraws(Weapon):
-    name = "Sour Straws"
+    name = "Sour Straw"
     attack_mod = random.uniform(1.0, 1.75)
     uses = 2
 
 
 class ChocolateBars(Weapon):
-    name = "Chocolate Bars"
+    name = "Chocolate Bar"
     attack_mod = random.uniform(2.0, 2.4)
     uses = 4
 
 
 class NerdBombs(Weapon):
-    name = "Nerd Bombs"
+    name = "Nerd Bomb"
     attack_mod = random.uniform(3.5, 5.0)
     uses = 1
 
@@ -107,13 +107,12 @@ class Player(object):
             weapon_list.append(nerdBombs)
 
     def p_attack(self, p_monster, p_weapon):
-        print("HERE IN P_ATTACK")
-
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
         monster.update()
 
 
+    
 class Neighborhood(object):
     def __init__(self, size):
         self.size = size
@@ -212,29 +211,86 @@ class Game(object):
             # FIX ME: This is where it crashes for some reason.
             self.p.attack(m, g_weapon)
 
+    def g_attack(self, monster, g_weapon):
+        self.p.p_attack(monster, g_weapon)
+
+    def humanize(self, monster):
+        self.curr.remove_observer(monster)
+        person = Person()
+        self.curr.add_observer(person)
+        
+    def print_inv(self):
+        for item in self.p.weapon_list:
+            print(item.name, item.uses)
 
 if __name__ == '__main__':
     game = Game(4)
     print("Welcome to Zork!")
 
     while game.p.hp != 0:
-        direction = input("Enter direction: ")
-        game.go(direction)
+        print("Enter command: Menu, Direction, Attack")
+        command = input()
+        if command == "Direction":
+            print("Enter direction: North, South, East, West")
+            direction = input()
+            game.go(direction)
 
-        # Lists all monsters in home.
-        print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
-        for x in game.curr.observers:
-            print(x.name, x.health)
+            # Lists all monsters in home.
+            print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
+            for x in game.curr.observers:
+                print(x.name, x.health)
+        if command == "Attack":
+            # Attack monsters here. Remove monster observables if their health <= 0
+            print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
+            weapon = input()
+            #never updates  uses
+            for monster in game.curr.observers:
+                for w in game.p.weapon_list:
+                    if weapon == w.name:
+                        game.g_attack(monster, w)
+                        #this makes it so it only uses top weapon w/ matching name
+                        break
+                        
+                if(monster.health <= 0):
+                    game.humanize(monster)
+            print("____Monster Health____")
+            for x in game.curr.observers:
+                print(x.name, x.health)
+            # Now monsters attack player before player can attack again.
+            for monster in game.curr.observers:
+                #this might need to be made as a game function
+                monster.m_attack(game.p)
+            
+            print("____Player Health____")
+            print(game.p.hp)
 
-        # Attack monsters here. Remove monster observables if their health <= 0
-        weapon = input("Enter weapon: ")
-        for monster in game.curr.observers:
-            for w in game.p.weapon_list:
-                if weapon == w.name:
-                    print("_________HERE________")
-                    print(w)
-                    game.g_attack(w)
-
-        # Now monsters attack player before player can attack again.
-
+        
         # Rinse and repeat until only humans or left or player leaves house.
+
+        #Menu to get stats,inventory,help or exit game
+        if command == "Menu":
+            print("Enter command: Stats, Inventory, Help, Exit")
+            command = input()
+            #prints player and monsters health
+            if command == "Stats":
+                print("____Player Health____")
+                print(game.p.hp)
+                print("____Monster Health____")
+                for m in game.curr.observers:
+                    print(m.name, m.health)
+            if command == "Inventory":
+                print ("____Player Inventory____")
+                game.print_inv()
+
+            if command == "Help":
+                print("Navagite your neigherbor hood by typing in the command 'Direction'")
+                print("Then type in one of the directions listed to move if able")
+                print("To attack all the monsters in a house at once use the command 'Attack'")
+                print("Then type in one of the candy weapons you have availble")
+                print("Type 'Menu' for useful information such as your health and inventory")
+                print("Hint some monsters take extra damage from some candy weapons")
+                print("Where other monsters are immune to certain weapons!")
+                
+
+            if command == "Exit":
+                sys.exit(0)
