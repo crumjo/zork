@@ -2,6 +2,7 @@
 
 # TO DO:
 # 1. Get command line size for grid.
+# 2. Add getters and setters for proper OO encapsulation.
 
 from observable import Observable
 from observer import Observer
