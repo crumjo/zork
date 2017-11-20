@@ -305,7 +305,7 @@ if __name__ == '__main__':
             print(game.p.hp)
             print("\n____Monster Health____")
             for m in game.curr.observers:
-                print(m.name, m.health)
+                print(m.name, "%.2f" % m.health)
 
         elif command == "inv":
             print ("\n____Player Inventory____")
