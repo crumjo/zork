@@ -107,6 +107,7 @@ class Player(object):
             weapon_list.append(nerdBombs)
 
     def p_attack(self, p_monster, p_weapon):
+        if p_monster != "Person":
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
         # Update uses.
         monster.update()
@@ -206,7 +207,7 @@ class Game(object):
                 print("Direction: " + direct)
 
     def g_attack(self, monster, g_weapon):
-            self.p.p_attack(monster, g_weapon)
+        self.p.p_attack(monster, g_weapon)
 
     def humanize(self, monster):
         self.curr.remove_observer(monster)
@@ -241,8 +242,7 @@ if __name__ == '__main__':
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
-                        if monster.name != "person":
-                            game.g_attack(monster, w)
+                        game.g_attack(monster, w)
                         #this makes it so it only uses top weapon w/ matching name
                         break
                         
