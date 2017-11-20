@@ -263,35 +263,39 @@ if __name__ == '__main__':
             weapon = str.lower(input())
 
             tmp = Weapon()
+            weapon_available = False
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
+                        weapon_available = True
                         game.g_attack(monster, w)
 
                         # This makes it so it only uses top weapon w/ matching name
                         tmp = w
                         break
+            if weapon_available is true:
+                tmp.update_use()
+                if tmp.uses == 0:
+                    game.p.weapon_update(tmp)
 
-            tmp.update_use()
-            if tmp.uses == 0:
-                game.p.weapon_update(tmp)
+                if monster.health <= 0:
+                    game.humanize(monster)
 
-            if monster.health <= 0:
-                game.humanize(monster)
+                print("\n____Monster Health____")
 
-            print("\n____Monster Health____")
+                for x in game.curr.observers:
+                    print(x.name, "%.2f" % x.health)
 
-            for x in game.curr.observers:
-                print(x.name, "%.2f" % x.health)
-
-            # Now monsters attack player before player can attack again.
-            for monster in game.curr.observers:
-                # This might need to be made as a game function
-                monster.m_attack(game.p)
-            
-            print("\n____Player Health____")
-            print(game.p.hp)
-
+                # Now monsters attack player before player can attack again.
+                for monster in game.curr.observers:
+                    # This might need to be made as a game function
+                    monster.m_attack(game.p)
+                
+                print("\n____Player Health____")
+                print(game.p.hp)
+            else:
+                Print("\n Please enter a valid weapon")
+                
         # Prints player and monsters health
         elif command == "stats":
             print("\n____Player Health____")
