@@ -286,16 +286,16 @@ if __name__ == '__main__':
                 print("\n____Monster Health____")
                 
                 if weapon_available is True:
-                for x in game.curr.observers:
-                    print(x.name, "%.2f" % x.health)
+                    for x in game.curr.observers:
+                        print(x.name, "%.2f" % x.health)
 
-                # Now monsters attack player before player can attack again.
-                for monster in game.curr.observers:
-                    # This might need to be made as a game function
-                    monster.m_attack(game.p)
-                
-                print("\n____Player Health____")
-                print(game.p.hp)
+                    # Now monsters attack player before player can attack again.
+                    for monster in game.curr.observers:
+                        # This might need to be made as a game function
+                        monster.m_attack(game.p)
+                    
+                    print("\n____Player Health____")
+                    print(game.p.hp)
             else:
                 print("\n Please enter a valid weapon")
                 
