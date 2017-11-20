@@ -122,9 +122,32 @@ class Player(object):
             i = i - 1
 
     def p_attack(self, p_monster, p_weapon):
-        p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
-        monster.update()
-
+        if p_weapon.name == "hershey kiss":
+            p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+            monster.update()
+        elif p_weapon.name == "sour straw":
+            if p_monster == "Zombie":
+                p_monster.health = p_monster.health - 2 * (p_weapon.attack_mod * self.attack)
+                monster.update()
+            elif p_monster == "Werewolf":
+                monster.update()
+            else:
+                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                monster.update()
+        elif p_weapon.name == "choclate bar":
+            if p_monster == "Vampire" or p_monster == "Werewolf":
+                monster.update()
+            else:
+                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                monster.update()
+        else:
+            if p_monster == "Ghoul":
+                p_monster.health = p_monster.health - 5 * (p_weapon.attack_mod * self.attack)
+                monster.update()
+            else:
+                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                monster.update()
+                
     def weapon_update(self, weapon):
         if w.uses == 0:
             self.weapon_list.remove(weapon)
