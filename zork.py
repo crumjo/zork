@@ -277,10 +277,11 @@ if __name__ == '__main__':
                 tmp.update_use()
                 if tmp.uses == 0:
                     game.p.weapon_update(tmp)
-
+                print("here1")
                 if monster.health <= 0:
+                    print("here2")
                     game.humanize(monster)
-
+                print("here3")
                 print("\n____Monster Health____")
 
                 for x in game.curr.observers:
