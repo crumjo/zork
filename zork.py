@@ -283,7 +283,7 @@ if __name__ == '__main__':
                   + str(game.x_pos) + ", " + str(game.y_pos) +
                   "): ")
             for x in game.curr.observers:
-                print(x.name, x.health)
+                print(x.name, "%.2f" % x.health)
 
         elif command == "attack":
             # Attack monsters here. Remove monster observables if their health <= 0
