@@ -274,28 +274,29 @@ if __name__ == '__main__':
                         tmp = w
                         break
             
-                tmp.update_use()
-                if tmp.uses == 0:
-                    game.p.weapon_update(tmp)
-                print("here1")
-                print(monster.health,monster.name)
-                if monster.health <= 0:
-                    print("here2")
-                    game.humanize(monster)
-                print("here3")
-                print("\n____Monster Health____")
+            tmp.update_use()
+            if tmp.uses == 0:
+                game.p.weapon_update(tmp)
+            print("here1")
+            print(monster.health,monster.name)
+            if monster.health <= 0:
+                print("here2")
+                game.humanize(monster)
+            print("here3")
+            print("\n____Monster Health____")
                 
-                if weapon_available is True:
-                    for x in game.curr.observers:
-                        print(x.name, "%.2f" % x.health)
+            if weapon_available is True:
+                for x in game.curr.observers:
+                    print(x.name, "%.2f" % x.health)
 
-                    # Now monsters attack player before player can attack again.
-                    for monster in game.curr.observers:
-                        # This might need to be made as a game function
-                        monster.m_attack(game.p)
+                # Now monsters attack player before player can attack again.
+                for monster in game.curr.observers:
+                    # This might need to be made as a game function
+                    monster.m_attack(game.p)
                     
-                    print("\n____Player Health____")
-                    print(game.p.hp)
+                print("\n____Player Health____")
+                print(game.p.hp)
+                
             else:
                 print("\n Please enter a valid weapon")
                 
