@@ -294,8 +294,8 @@ if __name__ == '__main__':
                 print("\n____Player Health____")
                 print(game.p.hp)
             else:
-                Print("\n Please enter a valid weapon")
-                ex
+                print("\n Please enter a valid weapon")
+                
         # Prints player and monsters health
         elif command == "stats":
             print("\n____Player Health____")
