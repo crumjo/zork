@@ -3,6 +3,7 @@
 # TO DO:
 # 1. Check for game won. It currently only tells you if you lose.
 # 2. Adjust which weapons damage which monsters.
+# 3. Monsters of the same type have to have random health.
 # 3. ????
 # 4. Profit.
 
@@ -29,7 +30,7 @@ class Monster(Observer):
 class Person(Monster):
     name = "Person"
     attack = -1
-    health = 100.0
+    health = 100
 
 
 class Zombie(Monster):
@@ -53,7 +54,7 @@ class Ghoul(Monster):
 class Werewolf(Monster):
     name = "Werewolf"
     attack = random.randint(0, 40)
-    health = 200.0
+    health = 200
 
 
 class Weapon(object):
@@ -140,7 +141,8 @@ class Neighborhood(object):
                 for y in range(0, self.size):
 
                     house = House()
-                    for i in range(0, 10):
+                    rand = random.randint(0, 10)
+                    for i in range(0, rand):
                         rand = random.randint(0, 4)
                         if rand == 0:
                             person = Person()
