@@ -1,5 +1,11 @@
 #! /usr/bin/env python3
 
+# TO DO:
+# 1. Check for game won. It currently only tells you if you lose.
+# 2. Adjust which weapons damage which monsters.
+# 3. ????
+# 4. Profit.
+
 from observable import Observable
 from observer import Observer
 import random
@@ -314,4 +320,4 @@ if __name__ == '__main__':
         else:
             print("\nCommand not recognized.\n")
 
-    # Check for game won.
+    print("Game over. You lose.")
