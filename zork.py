@@ -1,8 +1,7 @@
 #! /usr/bin/env python3
 
 # TO DO:
-# 1. Get command line size for grid.
-# 2. Add getters and setters for proper OO encapsulation.
+# 1. Add getters and setters for proper OO encapsulation.
 
 from observable import Observable
 from observer import Observer
@@ -16,18 +15,40 @@ class House(Observable):
 
 
 class Monster(Observer):
-    name = ""
-    attack = -1
-    health = -1.0
+
+    def __init__(self, name, attack, health):
+        self.name = name
+        self.attack = attack
+        self.health = health
+
+    def get_name(self):
+        return self.name
+
+    def get_health(self):
+        return self.health
+
+    def get_attack(self):
+        return self.attack
 
     def m_attack(self, player):
         player.hp = player.hp - self.attack
 
+    def set_name(self, name):
+        self.name = name
+
+    def set_attack(self, attack):
+        self.attack = attack
+
+    def set_health(self, health):
+        self.health = health
+
 
 class Person(Monster):
-    name = "Person"
-    attack = -1
-    health = 100
+
+    def __init__(self):
+        self.name = "Person"
+        self.attack = -1
+        self.health = 100
 
 
 class Zombie(Monster):
@@ -63,9 +84,28 @@ class Werewolf(Monster):
 
 
 class Weapon(object):
+
     name = ""
     attack_mod = 1.0
     uses = 1
+
+    def get_name(self):
+        return self.name
+
+    def get_attack_mod(self):
+        return self.attack_mod
+
+    def get_uses(self):
+        return self.uses
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_attack_mod(self, attack_mod):
+        self.attack_mod = attack_mod
+
+    def set_uses(self, uses):
+        self.uses = uses
 
     def update_use(self):
         self.uses = self.uses - 1
@@ -126,40 +166,67 @@ class Player(object):
             weapon_list.append(nerdBombs)
             i = i - 1
 
+    def get_hp(self):
+        return self.hp
+
+    def get_attack(self):
+        return self.attack
+
+    def get_weapon_list(self):
+        return self.weapon_list
+
+    def final_attack(self, x1, x2):
+        return x1 * x2
+
     def p_attack(self, p_monster, p_weapon):
-        if p_weapon.name == "hershey kiss":
-            p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+        if p_weapon.get_name() == "hershey kiss":
+            p_monster.set_health(p_monster.get_health() -
+                                 p_weapon.get_attack_mod() *
+                                 self.attack)
+
             monster.update()
 
-        elif p_weapon.name == "sour straw":
-            if p_monster.name == "Zombie":
-                p_monster.health = p_monster.health - 2 * (p_weapon.attack_mod * self.attack)
+        elif p_weapon.get_name() == "sour straw":
+            if p_monster.get_name() == "Zombie":
+                p_monster.set_health(p_monster.get_health() -
+                                     2 *
+                                     (p_weapon.get_attack_mod() *
+                                      self.attack))
+
                 monster.update()
 
-            elif p_monster.name == "Werewolf":
-                monster.update()
+            elif p_monster.get_name() == "Werewolf":
+                pass
 
             else:
-                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                p_monster.set_health(p_monster.get_health() -
+                                     p_weapon.get_attack_mod() *
+                                     self.attack)
                 monster.update()
 
-        elif p_weapon.name == "chocolate bar":
-            if p_monster.name == "Vampire" or p_monster.name == "Werewolf":
-                monster.update()
+        elif p_weapon.get_name() == "chocolate bar":
+            if p_monster.get_name() == "Vampire" or p_monster.get_name() == "Werewolf":
+                pass
             else:
-                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                p_monster.set_health(p_monster.get_health() -
+                                     p_weapon.get_attack_mod() *
+                                     self.attack)
                 monster.update()
         else:
-            print("6")
-            if p_monster.name == "Ghoul":
-                p_monster.health = p_monster.health - (5 * (p_weapon.attack_mod * self.attack))
+            if p_monster.get_name() == "Ghoul":
+                p_monster.set_health(p_monster.get_health() -
+                                     5 *
+                                     (p_weapon.get_attack_mod() *
+                                      self.attack))
                 monster.update()
             else:
-                p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+                p_monster.set_health(p_monster.get_health() -
+                                     p_weapon.get_attack_mod() *
+                                     self.attack)
                 monster.update()
                 
     def weapon_update(self, weapon):
-        if w.uses == 0:
+        if w.get_uses() == 0:
             self.weapon_list.remove(weapon)
 
     
@@ -260,7 +327,7 @@ class Game(object):
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
 
     def g_attack(self, g_monster, g_weapon):
-        if g_monster.name != "Person":
+        if g_monster.get_name() != "Person":
             self.p.p_attack(g_monster, g_weapon)
 
     def humanize(self, h_monster):
@@ -269,11 +336,11 @@ class Game(object):
         self.curr.add_observer(person)
         
     def print_inv(self):
-        for item in self.p.weapon_list:
-            if item.name == "hershey kiss":
-                print(item.name)
+        for item in self.p.get_weapon_list():
+            if item.get_name() == "hershey kiss":
+                print(item.get_name())
             else:
-                print(item.name, item.uses)
+                print(item.get_name(), item.get_uses())
 
     def check_won(self, nh):
         for x in range(0, nh.size):
@@ -321,10 +388,10 @@ if __name__ == '__main__':
                   "): ")
 
             for x in game.curr.observers:
-                print(x.name, "%.2f" % x.health)
+                print(x.get_name(), "%.2f" % x.get_health())
 
         elif command == "attack":
-            # Attack monsters here. Remove monster observables if their health <= 0
+
             print ("Enter a valid weapon (Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb): ")
             weapon = str.lower(input())
 
@@ -332,35 +399,36 @@ if __name__ == '__main__':
             weapon_available = False
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
-                    if weapon == w.name:
+                    if weapon == w.get_name():
                         weapon_available = True
                         game.g_attack(monster, w)
 
                         # This makes it so it only uses top weapon w/ matching name
-                        if monster.health <= 0:
-                            game.humanize(monster)
-
                         tmp = w
                         break
-            
-            tmp.update_use()
-            if tmp.uses == 0:
-                game.p.weapon_update(tmp)
 
-            print("\n____Player Health____")
-            print(game.p.hp)
-
-            print(monster.health, monster.name)
-            print("\n____Monster Health____")
-                
             if weapon_available is True:
-                for x in game.curr.observers:
-                    print(x.name, "%.2f" % x.health)
+
+                tmp.update_use()
+                if tmp.get_uses() == 0:
+                    game.p.weapon_update(tmp)
+
+                for monster in game.curr.observers:
+                    if monster.get_health() <= 0:
+                        game.humanize(monster)
 
                 # Now monsters attack player before player can attack again.
                 for monster in game.curr.observers:
                     # This might need to be made as a game function
                     monster.m_attack(game.p)
+
+                print("\n____Player Health____")
+                print(game.p.get_hp())
+
+                print("\n____Monster Health____")
+                for x in game.curr.observers:
+                    print(x.get_name(), "%.2f" % x.get_health())
+
                 
             else:
                 print("\n'" + weapon + "' is not in your inventory.")
@@ -368,10 +436,10 @@ if __name__ == '__main__':
         # Prints player and monsters health
         elif command == "stats":
             print("\n____Player Health____")
-            print(game.p.hp)
+            print(game.p.get_hp())
             print("\n____Monster Health____")
             for m in game.curr.observers:
-                print(m.name, "%.2f" % m.health)
+                print(m.get_name(), "%.2f" % m.get_health())
 
         elif command == "inv":
             print ("\n____Player Inventory____")
