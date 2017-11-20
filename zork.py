@@ -1,11 +1,7 @@
 #! /usr/bin/env python3
 
 # TO DO:
-# 1. Check for game won. It currently only tells you if you lose.
-# 2. Adjust which weapons damage which monsters.
-# 3. Monsters of the same type have to have random health.
-# 3. ????
-# 4. Profit.
+# 1. Get command line size for grid.
 
 from observable import Observable
 from observer import Observer
@@ -34,27 +30,35 @@ class Person(Monster):
 
 
 class Zombie(Monster):
-    name = "Zombie"
-    attack = random.randint(0, 10)
-    health = random.randint(50.0, 100.0)
+
+    def __init__(self, attack, health):
+        self.name = "Zombie"
+        self.attack = attack
+        self.health = health
 
 
 class Vampire(Monster):
-    name = "Vampire"
-    attack = random.randint(10, 20)
-    health = random.randint(100.0, 200.0)
+
+    def __init__(self, attack, health):
+        self.name = "Vampire"
+        self.attack = attack
+        self.health = health
 
 
 class Ghoul(Monster):
-    name = "Ghoul"
-    attack = random.randint(15, 30)
-    health = random.randint(40.0, 80.0)
+
+    def __init__(self, attack, health):
+        self.name = "Ghoul"
+        self.attack = attack
+        self.health = health
 
 
 class Werewolf(Monster):
-    name = "Werewolf"
-    attack = random.randint(0, 40)
-    health = 200
+
+    def __init__(self, attack):
+        self.name = "Werewolf"
+        self.health = 200
+        self.attack = attack
 
 
 class Weapon(object):
@@ -171,6 +175,7 @@ class Neighborhood(object):
                     house = House()
                     rand = random.randint(0, 10)
                     for i in range(0, rand):
+
                         rand = random.randint(0, 4)
                         if rand == 0:
                             person = Person()
@@ -178,22 +183,29 @@ class Neighborhood(object):
                             person.update()
 
                         if rand == 1:
-                            zombie = Zombie()
+                            z_attack = random.randint(0, 10)
+                            z_health = random.randint(50.0, 100.0)
+                            zombie = Zombie(z_attack, z_health)
                             house.add_observer(zombie)
                             zombie.update()
 
                         if rand == 2:
-                            vampire = Vampire()
+                            v_attack = random.randint(10, 20)
+                            v_health = random.randint(100.0, 200.0)
+                            vampire = Vampire(v_attack, v_health)
                             house.add_observer(vampire)
                             vampire.update()
 
                         if rand == 3:
-                            ghoul = Ghoul()
+                            g_attack = random.randint(15, 30)
+                            g_health = random.randint(40.0, 80.0)
+                            ghoul = Ghoul(g_attack, g_health)
                             house.add_observer(ghoul)
                             ghoul.update()
 
                         if rand == 4:
-                            werewolf = Werewolf()
+                            w_attack = random.randint(0, 40)
+                            werewolf = Werewolf(w_attack)
                             house.add_observer(werewolf)
                             werewolf.update()
 
@@ -262,15 +274,39 @@ class Game(object):
             else:
                 print(item.name, item.uses)
 
+    def check_won(self, nh):
+        for x in range(0, nh.size):
+            for y in range(0, nh.size):
+                tmp = nh.grid[x][y]
+                for m in tmp.observers:
+                    if m.name != "Person":
+                        return 0
+                    else:
+                        return 1
+
+
 if __name__ == '__main__':
 
+    if len(sys.argv) == 2:
+        size = int(sys.argv[1])
+    else:
+        print("Provide a single argument for the size of the grid.\n"
+              "Example: ./zork.py 4     creates a 4x4 grid.")
+        sys.exit(0)
+
+
     # Take command line argument for size.
-    game = Game(4)
+    game = Game(size)
     print("Welcome to Zork!")
 
-    #while game.p.hp > 0:
+    # while game.p.hp > 0:
     while 1:
-        print("\nEnter Command: Go, Attack, Stats, Inv, Help")
+
+        if game.check_won(game.nh) == 1:
+                print("All monsters transformed back into humans! You win!")
+                sys.exit(0)
+
+        print("\nEnter Command (Go, Attack, Stats, Inv, Help, Exit): ")
         command = str.lower(input())
 
         if command == "go":
@@ -282,12 +318,13 @@ if __name__ == '__main__':
             print("\nMonsters in house at current position ("
                   + str(game.x_pos) + ", " + str(game.y_pos) +
                   "): ")
+
             for x in game.curr.observers:
                 print(x.name, "%.2f" % x.health)
 
         elif command == "attack":
             # Attack monsters here. Remove monster observables if their health <= 0
-            print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
+            print ("Enter a valid weapon (Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb): ")
             weapon = str.lower(input())
 
             tmp = Weapon()
@@ -325,7 +362,7 @@ if __name__ == '__main__':
                     monster.m_attack(game.p)
                 
             else:
-                print("\n Please enter a valid weapon")
+                print("\n'" + weapon + "' is not in your inventory.")
                 
         # Prints player and monsters health
         elif command == "stats":

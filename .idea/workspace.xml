@@ -17,10 +17,10 @@
       <file leaf-file-name="zork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="285" column="48" lean-forward="true" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="48" />
+            <state relative-caret-position="250">
+              <caret line="290" column="31" lean-forward="false" selection-start-line="290" selection-start-column="31" selection-end-line="290" selection-end-column="31" />
               <folding>
-                <element signature="e#232#265#0" expanded="true" />
+                <element signature="e#72#105#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -186,7 +186,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -212,7 +212,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -238,7 +238,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -264,7 +264,7 @@
         <state relative-caret-position="663">
           <caret line="346" column="23" lean-forward="true" selection-start-line="346" selection-start-column="23" selection-end-line="346" selection-end-column="23" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -290,7 +290,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -316,7 +316,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -342,7 +342,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -368,7 +368,7 @@
         <state relative-caret-position="1965">
           <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -394,7 +394,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -420,7 +420,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -446,7 +446,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -469,10 +469,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="285" column="48" lean-forward="true" selection-start-line="285" selection-start-column="48" selection-end-line="285" selection-end-column="48" />
+        <state relative-caret-position="250">
+          <caret line="290" column="31" lean-forward="false" selection-start-line="290" selection-start-column="31" selection-end-line="290" selection-end-column="31" />
           <folding>
-            <element signature="e#232#265#0" expanded="true" />
+            <element signature="e#72#105#0" expanded="true" />
           </folding>
         </state>
       </provider>
