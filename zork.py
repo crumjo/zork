@@ -107,10 +107,9 @@ class Player(object):
             weapon_list.append(nerdBombs)
 
     def p_attack(self, p_monster, p_weapon):
-        if p_monster != "Person":
-            p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
-            # Update uses.
-            monster.update()
+        p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
+        # Update uses.
+        monster.update()
 
 
     
