@@ -10,6 +10,7 @@ class House(Observable):
     def update(self, *args, **kwargs):
         pass
 
+
 class Monster(Observer):
     name = ""
     attack = -1
@@ -111,7 +112,6 @@ class Player(object):
         # Update uses.
         monster.update()
 
-
     
 class Neighborhood(object):
     def __init__(self, size):
@@ -206,22 +206,24 @@ class Game(object):
                 print("Direction: " + direct)
 
     def g_attack(self, g_weapon):
-        for m in self.curr.observers:
+        for g_m in self.curr.observers:
 
             # FIX ME: This is where it crashes for some reason.
-            self.p.attack(m, g_weapon)
+            self.p.attack(g_m, g_weapon)
 
-    def g_attack(self, monster, g_weapon):
-        self.p.p_attack(monster, g_weapon)
+    # Why are there two attack methods? Which one is used?
+    def g_attack(self, g_monster, g_weapon):
+        self.p.p_attack(g_monster, g_weapon)
 
-    def humanize(self, monster):
-        self.curr.remove_observer(monster)
+    def humanize(self, h_monster):
+        self.curr.remove_observer(h_monster)
         person = Person()
         self.curr.add_observer(person)
         
     def print_inv(self):
         for item in self.p.weapon_list:
             print(item.name, item.uses)
+
 
 if __name__ == '__main__':
     game = Game(4)
@@ -243,35 +245,36 @@ if __name__ == '__main__':
             # Attack monsters here. Remove monster observables if their health <= 0
             print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
             weapon = input()
-            #never updates  uses
+            # Never updates  uses
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
                         game.g_attack(monster, w)
-                        #this makes it so it only uses top weapon w/ matching name
+                        # This makes it so it only uses top weapon w/ matching name
                         break
                         
-                if(monster.health <= 0):
+                if monster.health <= 0:
                     game.humanize(monster)
             print("____Monster Health____")
             for x in game.curr.observers:
                 print(x.name, x.health)
+
             # Now monsters attack player before player can attack again.
             for monster in game.curr.observers:
-                #this might need to be made as a game function
+                # This might need to be made as a game function
                 monster.m_attack(game.p)
             
             print("____Player Health____")
             print(game.p.hp)
 
-        
         # Rinse and repeat until only humans or left or player leaves house.
 
-        #Menu to get stats,inventory,help or exit game
+        # Menu to get stats,inventory,help or exit game
         if command == "Menu":
             print("Enter command: Stats, Inventory, Help, Exit")
             command = input()
-            #prints player and monsters health
+
+            # Prints player and monsters health
             if command == "Stats":
                 print("____Player Health____")
                 print(game.p.hp)
@@ -283,14 +286,13 @@ if __name__ == '__main__':
                 game.print_inv()
 
             if command == "Help":
-                print("Navagite your neigherbor hood by typing in the command 'Direction'")
+                print("Navigate your neighborhood by typing in the command 'Direction'")
                 print("Then type in one of the directions listed to move if able")
                 print("To attack all the monsters in a house at once use the command 'Attack'")
-                print("Then type in one of the candy weapons you have availble")
+                print("Then type in one of the candy weapons you have available")
                 print("Type 'Menu' for useful information such as your health and inventory")
                 print("Hint some monsters take extra damage from some candy weapons")
                 print("Where other monsters are immune to certain weapons!")
-                
 
             if command == "Exit":
                 sys.exit(0)
