@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4dbe966-41d1-4492-aaa9-353b86089df2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observer.py" afterPath="$PROJECT_DIR$/observer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zork.py" afterPath="$PROJECT_DIR$/zork.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="zork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+            <state relative-caret-position="-949">
+              <caret line="207" column="25" lean-forward="false" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
               <folding>
                 <element signature="e#25#58#0" expanded="true" />
               </folding>
@@ -103,6 +102,9 @@
       <pane id="Scratches" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Josh/Google Drive/Documents/College/GVSU/Fall2017/CIS343/Project_4/observable.py" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -180,8 +182,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+        <state relative-caret-position="-949">
+          <caret line="207" column="25" lean-forward="false" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
           <folding>
             <element signature="e#25#58#0" expanded="true" />
           </folding>

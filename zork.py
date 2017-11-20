@@ -60,25 +60,25 @@ class Weapon(object):
 
 
 class HersheyKiss(Weapon):
-    name = "Hershey Kiss"
+    name = "hershey kiss"
     attack_mod = 1.0
     uses = sys.maxsize
 
 
 class SourStraws(Weapon):
-    name = "Sour Straw"
+    name = "sour straw"
     attack_mod = random.uniform(1.0, 1.75)
     uses = 2
 
 
 class ChocolateBars(Weapon):
-    name = "Chocolate Bar"
+    name = "chocolate bar"
     attack_mod = random.uniform(2.0, 2.4)
     uses = 4
 
 
 class NerdBombs(Weapon):
-    name = "Nerd Bomb"
+    name = "nerd bomb"
     attack_mod = random.uniform(3.5, 5.0)
     uses = 1
 
@@ -88,24 +88,31 @@ class Player(object):
     attack = random.randint(10, 20)
     weapon_list = []
 
-    for i in range(0, 10):
+    kiss_check = 0
+    i = 10
+    while i != 0:
         rand = random.randint(0, 3)
 
-        if rand == 0:
+        if rand == 0 and kiss_check != 1:
             hersheyKiss = HersheyKiss()
             weapon_list.append(hersheyKiss)
+            kiss_check = 1
+            i = i - 1
 
         if rand == 1:
             sourStraws = SourStraws()
             weapon_list.append(sourStraws)
+            i = i - 1
 
         if rand == 2:
             chocolateBars = ChocolateBars()
             weapon_list.append(chocolateBars)
+            i = i - 1
 
         if rand == 3:
             nerdBombs = NerdBombs()
             weapon_list.append(nerdBombs)
+            i = i - 1
 
     def p_attack(self, p_monster, p_weapon):
         p_monster.health = p_monster.health - (p_weapon.attack_mod * self.attack)
@@ -174,38 +181,34 @@ class Game(object):
         if direct == "north":
             temp = self.y_pos
             if (temp + 1) > (self.size - 1):
-                print("No houses to the north.")
+                print("\nNo houses to the north.")
             else:
                 self.y_pos = self.y_pos + 1
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
-                print("Direction: " + direct)
 
         if direct == "south":
             temp = self.y_pos
             if (temp - 1) < 0:
-                print("No houses to the south.")
+                print("\nNo houses to the south.")
             else:
                 self.y_pos = self.y_pos - 1
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
-                print("Direction: " + direct)
 
         if direct == "east":
             temp = self.x_pos
             if (temp + 1) > (self.size - 1):
-                print("No houses to the east.")
+                print("\nNo houses to the east.")
             else:
                 self.x_pos = self.x_pos + 1
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
-                print("Direction: " + direct)
 
         if direct == "west":
             temp = self.x_pos
             if (temp - 1) < 0:
-                print("No houses to the west.")
+                print("\nNo houses to the west.")
             else:
                 self.x_pos = self.x_pos - 1
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
-                print("Direction: " + direct)
 
     def g_attack(self, g_monster, g_weapon):
         if g_monster.name != "Person":
@@ -218,15 +221,20 @@ class Game(object):
         
     def print_inv(self):
         for item in self.p.weapon_list:
-            print(item.name, item.uses)
-
+            if item.name == "hershey kiss":
+                print(item.name)
+            else:
+                print(item.name, item.uses)
 
 if __name__ == '__main__':
+
+    # Take command line argument for size.
     game = Game(4)
     print("Welcome to Zork!")
 
-    while game.p.hp != 0:
-        print("Enter command: Menu, Go, Attack")
+    #while game.p.hp > 0:
+    while 1:
+        print("\nEnter Command: Go, Attack, Stats, Inv, Help")
         command = str.lower(input())
 
         if command == "go":
@@ -235,14 +243,16 @@ if __name__ == '__main__':
             game.go(direction)
 
             # Lists all monsters in home.
-            print("Monsters in house at position: " + str(game.x_pos) + ", " + str(game.y_pos))
+            print("\nMonsters in house at current position ("
+                  + str(game.x_pos) + ", " + str(game.y_pos) +
+                  "): ")
             for x in game.curr.observers:
                 print(x.name, x.health)
 
-        if command == "attack":
+        elif command == "attack":
             # Attack monsters here. Remove monster observables if their health <= 0
             print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
-            weapon = input()
+            weapon = str.lower(input())
 
             tmp = Weapon()
             for monster in game.curr.observers:
@@ -261,7 +271,7 @@ if __name__ == '__main__':
             if monster.health <= 0:
                 game.humanize(monster)
 
-            print("____Monster Health____")
+            print("\n____Monster Health____")
 
             for x in game.curr.observers:
                 print(x.name, "%.2f" % x.health)
@@ -271,39 +281,37 @@ if __name__ == '__main__':
                 # This might need to be made as a game function
                 monster.m_attack(game.p)
             
-            print("____Player Health____")
+            print("\n____Player Health____")
             print(game.p.hp)
 
-        # Rinse and repeat until only humans or left or player leaves house.
+        # Prints player and monsters health
+        elif command == "stats":
+            print("\n____Player Health____")
+            print(game.p.hp)
+            print("\n____Monster Health____")
+            for m in game.curr.observers:
+                print(m.name, m.health)
 
-        # Menu to get stats,inventory,help or exit game
-        if command == "menu":
-            print("Enter command: Stats, Inventory, Help, Exit")
-            command = str.lower(input())
+        elif command == "inv":
+            print ("\n____Player Inventory____")
+            game.print_inv()
 
-            # Prints player and monsters health
-            if command == "stats":
-                print()
-                print("____Player Health____")
-                print(game.p.hp)
-                print()
-                print("____Monster Health____")
-                for m in game.curr.observers:
-                    print(m.name, m.health)
-                print()
+        elif command == "help":
+            print("\nGame Objective: Navigate from house to house in a neighborhood\n"
+                  "and eliminate all the monsters. Once a monster has been\n"
+                  "eliminated, it turns into a person which will give you health.\n")
+            print("Commands: ")
+            print("- Go: Move one house to the north, south, east, or west.")
+            print("- Attack: Attack all the monsters in the house after a weapon\n"
+                  "has been chosen.")
+            print("- Stats: Display your health and the health of the\n"
+                  "monsters in the current house.")
+            print ("- Inv: List all the weapons and their uses in your inventory.\n")
 
-            if command == "inventory":
-                print ("____Player Inventory____")
-                game.print_inv()
-
-            if command == "help":
-                print("Navigate your neighborhood by typing in the command 'Direction'")
-                print("Then type in one of the directions listed to move if able")
-                print("To attack all the monsters in a house at once use the command 'Attack'")
-                print("Then type in one of the candy weapons you have available")
-                print("Type 'Menu' for useful information such as your health and inventory")
-                print("Hint some monsters take extra damage from some candy weapons")
-                print("Where other monsters are immune to certain weapons!")
-
-            if command == "exit":
+        elif command == "exit":
                 sys.exit(0)
+
+        else:
+            print("\nCommand not recognized.\n")
+
+    # Check for game won.
