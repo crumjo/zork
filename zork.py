@@ -278,6 +278,7 @@ if __name__ == '__main__':
                 if tmp.uses == 0:
                     game.p.weapon_update(tmp)
                 print("here1")
+                print(monster.health,monster.name)
                 if monster.health <= 0:
                     print("here2")
                     game.humanize(monster)
