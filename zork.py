@@ -271,16 +271,17 @@ if __name__ == '__main__':
                         game.g_attack(monster, w)
 
                         # This makes it so it only uses top weapon w/ matching name
+                        if monster.health <= 0:
+                            game.humanize(monster)
+
                         tmp = w
                         break
             
             tmp.update_use()
             if tmp.uses == 0:
                 game.p.weapon_update(tmp)
-            print(monster.health,monster.name)
-            for m in game.curr.observers:
-                if m.health <= 0:
-                    game.humanize(m)
+
+            print(monster.health, monster.name)
             print("\n____Monster Health____")
                 
             if weapon_available is True:
