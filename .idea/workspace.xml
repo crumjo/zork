@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4dbe966-41d1-4492-aaa9-353b86089df2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zork.py" afterPath="$PROJECT_DIR$/zork.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +17,10 @@
       <file leaf-file-name="zork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="413" column="45" lean-forward="true" selection-start-line="413" selection-start-column="45" selection-end-line="413" selection-end-column="45" />
+            <state relative-caret-position="135">
+              <caret line="139" column="32" lean-forward="false" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
               <folding>
-                <element signature="e#93#126#0" expanded="true" />
+                <element signature="e#68#101#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -28,8 +29,8 @@
       <file leaf-file-name="observable.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/observable.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="75">
+              <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -53,6 +54,12 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>The house is</find>
+      <find>humaniz</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -169,7 +176,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -187,7 +194,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -229,7 +236,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -255,7 +262,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -281,7 +288,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -307,7 +314,7 @@
         <state relative-caret-position="663">
           <caret line="346" column="23" lean-forward="true" selection-start-line="346" selection-start-column="23" selection-end-line="346" selection-end-column="23" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -333,7 +340,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -359,7 +366,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -385,7 +392,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -411,7 +418,7 @@
         <state relative-caret-position="1965">
           <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -437,7 +444,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -463,7 +470,7 @@
         <state relative-caret-position="-237">
           <caret line="273" column="31" lean-forward="true" selection-start-line="273" selection-start-column="31" selection-end-line="273" selection-end-column="31" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -489,25 +496,7 @@
         <state relative-caret-position="93">
           <caret line="248" column="62" lean-forward="true" selection-start-line="248" selection-start-column="62" selection-end-line="248" selection-end-column="62" />
           <folding>
-            <element signature="e#93#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="413" column="45" lean-forward="true" selection-start-line="413" selection-start-column="45" selection-end-line="413" selection-end-column="45" />
-          <folding>
-            <element signature="e#93#126#0" expanded="true" />
+            <element signature="e#68#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -517,6 +506,24 @@
         <state relative-caret-position="0">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/observable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="139" column="32" lean-forward="false" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
+          <folding>
+            <element signature="e#68#101#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

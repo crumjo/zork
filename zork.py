@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 
 # TO DO:
-# 1. Add getters and setters for proper OO encapsulation.
+# 1. Comments
+# 2. Bug checking.
 
 from observable import Observable
 from observer import Observer
@@ -136,7 +137,7 @@ class NerdBombs(Weapon):
 
 
 class Player(object):
-    hp = random.randint(100, 125)
+    hp = random.randint(250, 275)
     attack = random.randint(10, 20)
     weapon_list = []
 
@@ -367,8 +368,8 @@ if __name__ == '__main__':
     game = Game(size)
     print("Welcome to Zork!")
 
-    # while game.p.hp > 0:
-    while 1:
+    while game.p.hp > 0:
+    # while 1:
 
         if game.check_won(game.nh) == 1:
                 print("All monsters transformed back into humans! You win!")
@@ -397,49 +398,62 @@ if __name__ == '__main__':
 
             tmp = Weapon()
             weapon_available = False
-            for monster in game.curr.observers:
-                for w in game.p.weapon_list:
-                    if weapon == w.get_name():
-                        weapon_available = True
-                        game.g_attack(monster, w)
-
-                        # This makes it so it only uses top weapon w/ matching name
-                        tmp = w
-                        break
-
-            if weapon_available is True:
-
-                tmp.update_use()
-                if tmp.get_uses() == 0:
-                    game.p.weapon_update(tmp)
-
+            if len(game.curr.observers) != 0:
                 for monster in game.curr.observers:
-                    if monster.get_health() <= 0:
-                        game.humanize(monster)
+                    for w in game.p.weapon_list:
+                        if weapon == w.get_name():
+                            weapon_available = True
+                            game.g_attack(monster, w)
 
-                # Now monsters attack player before player can attack again.
-                for monster in game.curr.observers:
-                    # This might need to be made as a game function
-                    monster.m_attack(game.p)
+                            # This makes it so it only uses top weapon w/ matching name
+                            tmp = w
+                            break
 
-                print("\n____Player Health____")
-                print(game.p.get_hp())
+                if weapon_available is True:
 
-                print("\n____Monster Health____")
-                for x in game.curr.observers:
-                    print(x.get_name(), "%.2f" % x.get_health())
+                    tmp.update_use()
+                    if tmp.get_uses() == 0:
+                        game.p.weapon_update(tmp)
 
-                
+                    i = 0
+                    while i < len(game.curr.observers):
+                    # for monster in game.curr.observers:
+                        # if monster.get_health() <= 0:
+                        if game.curr.observers[i].get_health() <= 0:
+                            game.humanize(game.curr.observers[i])
+                            i = i - 1
+                        i = i + 1
+
+                    # Now monsters attack player before player can attack again.
+                    for monster in game.curr.observers:
+                        # This might need to be made as a game function
+                        monster.m_attack(game.p)
+
+                    print("\n____Player Health____")
+                    print(game.p.get_hp())
+
+                    print("\n____Monster Health____")
+                    for x in game.curr.observers:
+                        print(x.get_name(), "%.2f" % x.get_health())
+
+
+                else:
+                    print("\n'" + weapon + "' is not in your inventory.")
+
             else:
-                print("\n'" + weapon + "' is not in your inventory.")
+                print("\nThis house is empty. There is nothing to attack.")
                 
         # Prints player and monsters health
         elif command == "stats":
             print("\n____Player Health____")
             print(game.p.get_hp())
-            print("\n____Monster Health____")
-            for m in game.curr.observers:
-                print(m.get_name(), "%.2f" % m.get_health())
+
+            if len(game.curr.observers) != 0:
+                print("\n____Monster Health____")
+                for m in game.curr.observers:
+                    print(m.get_name(), "%.2f" % m.get_health())
+            else:
+                print("\nThe house is empty. Maybe you are the monster...")
 
         elif command == "inv":
             print ("\n____Player Inventory____")
