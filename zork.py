@@ -273,7 +273,7 @@ if __name__ == '__main__':
                         # This makes it so it only uses top weapon w/ matching name
                         tmp = w
                         break
-            if weapon_available is true:
+            if weapon_available is True:
                 tmp.update_use()
                 if tmp.uses == 0:
                     game.p.weapon_update(tmp)
@@ -295,7 +295,7 @@ if __name__ == '__main__':
                 print(game.p.hp)
             else:
                 Print("\n Please enter a valid weapon")
-                
+                ex
         # Prints player and monsters health
         elif command == "stats":
             print("\n____Player Health____")
