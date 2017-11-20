@@ -133,7 +133,6 @@ class Neighborhood(object):
                             person = Person()
                             house.add_observer(person)
                             person.update()
-                            print(person.name, person.attack, person.health)
 
                         if rand == 1:
                             zombie = Zombie()
@@ -208,15 +207,9 @@ class Game(object):
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
                 print("Direction: " + direct)
 
-    def g_attack(self, g_weapon):
-        for g_m in self.curr.observers:
-
-            # FIX ME: This is where it crashes for some reason.
-            self.p.attack(g_m, g_weapon)
-
-    # Why are there two attack methods? Which one is used?
     def g_attack(self, g_monster, g_weapon):
-        self.p.p_attack(g_monster, g_weapon)
+        if g_monster.name != "Person":
+            self.p.p_attack(g_monster, g_weapon)
 
     def humanize(self, h_monster):
         self.curr.remove_observer(h_monster)
@@ -251,16 +244,16 @@ if __name__ == '__main__':
             print ("Enter weapon: Hershey Kiss, Chocolate Bar, Sour Straw, Nerd Bomb")
             weapon = input()
 
-            # Never updates  uses
             tmp = Weapon()
             for monster in game.curr.observers:
                 for w in game.p.weapon_list:
                     if weapon == w.name:
                         game.g_attack(monster, w)
-                        # p_weapon.update_use()
+
                         # This makes it so it only uses top weapon w/ matching name
                         tmp = w
                         break
+
             tmp.update_use()
             if tmp.uses == 0:
                 game.p.weapon_update(tmp)
