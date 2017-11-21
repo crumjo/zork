@@ -10,177 +10,166 @@ from observer import Observer
 import random
 import sys
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Halloween Zork game using OO
-'@author Patton Finley Josh Crum
-'@Version Nov 2017
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'House class that observes the monsters in it, inherates(typo)
-'observable class
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#Halloween Zork game using OO
+#@author Patton Finley Josh Crum
+#@Version Nov 2017
+
+
+
+#House class that observes the monsters in it, inherates(typo)
+#observable class
+
 class House(Observable):
     def update(self, *args, **kwargs):
         pass
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Monster class that defines setters and getters for monsters
-'inhereits(typo) from the observer class
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#Monster class that defines setters and getters for monsters
+#inhereits(typo) from the observer class
+
+
 class Monster(Observer):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for monsters
-    '
-    '@param name - string for name of monster
-    '@param attack - int for amount of damage monster does
-    '@param health - int for amount of health monster has
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Constructor class for monsters
+    #
+    #@param name - string for name of monster
+    #@param attack - int for amount of damage monster does
+    #@param health - int for amount of health monster has
+    
     def __init__(self, name, attack, health):
         self.name = name
         self.attack = attack
         self.health = health
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the monsters name
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the monsters name
+    
     def get_name(self):
         return self.name
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the monsters health
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the monsters health
+    
     def get_health(self):
         return self.health
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the monsters attack
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Getter method that returns the monsters attack
+    
     def get_attack(self):
         return self.attack
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Method that takes in a player and deals monster damage
-    'to them
-    '
-    '@param player an object that takes damage
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Method that takes in a player and deals monster damage
+    #to them
+    #@param player an object that takes damage
+    
     def m_attack(self, player):
         player.hp = player.hp - self.attack
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the monsters name to the inputted
-    'name
-    '
-    '@param string name - string to rename monster
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Setter method that sets the monsters name to the inputted
+    #name
+    #@param string name - string to rename monster
+
     def set_name(self, name):
         self.name = name
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the monsters attack to the inputted
-    'attack
-    '
-    '@param int attack - int to set a monster attack too
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Setter method that sets the monsters attack to the inputted
+    #attack
+    #@param int attack - int to set a monster attack too
+
     def set_attack(self, attack):
         self.attack = attack
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the monsters health to the inputted
-    'health
-    '
-    '@param int health - int to set monsters health
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Setter method that sets the monsters health to the inputted
+    #health
+    #@param int health - int to set monsters health
+    #
     def set_health(self, health):
         self.health = health
 
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Person class that inherits from monster class and defines
-'a monster as a person
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Person class that inherits from monster class and defines
+#a monster as a person
+
 class Person(Monster):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for a person
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Constructor class for a person
+    
     def __init__(self):
         self.name = "Person"
         self.attack = -1
         self.health = 100
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Zombie class that inherits from monster class and
-'defines a monsters as a zombie
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Zombie class that inherits from monster class and
+#defines a monsters as a zombie
+
 class Zombie(Monster):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for Zombies
-    '
-    '@param attack - int for amount of damage the zombie does
-    '@param health - int for amount of health zombie has
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Constructor class for Zombies
+    #@param attack - int for amount of damage the zombie does
+    #@param health - int for amount of health zombie has
+
     def __init__(self, attack, health):
         self.name = "Zombie"
         self.attack = attack
         self.health = health
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Vampire class that inherits from monster class and
-'defines a monsters as a vampire
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Vampire class that inherits from monster class and
+#defines a monsters as a vampire
+
 class Vampire(Monster):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for Vampires
-    '
-    '@param attack - int for amount of damage the vampire does
-    '@param health - int for amount of health vampire has
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+   
+    #Constructor class for Vampires
+    #@param attack - int for amount of damage the vampire does
+    #@param health - int for amount of health vampire has
+    
     def __init__(self, attack, health):
         self.name = "Vampire"
         self.attack = attack
         self.health = health
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Ghoul class that inherits from monster class and
-'defines a monsters as a ghoul
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Ghoul class that inherits from monster class and
+#defines a monsters as a ghoul
+
 class Ghoul(Monster):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for Ghouls
-    '
-    '@param attack - int for amount of damage the ghoul does
-    '@param health - int for amount of health ghoul has
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Constructor class for Ghouls
+    #@param attack - int for amount of damage the ghoul does
+    #@param health - int for amount of health ghoul has
+
     def __init__(self, attack, health):
         self.name = "Ghoul"
         self.attack = attack
         self.health = health
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Werewolf class that inherits from monster class and
-'defines a monsters as a werewolf
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Werewolf class that inherits from monster class and
+#defines a monsters as a werewolf
+
 class Werewolf(Monster):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for Werewolfs
-    '
-    '@param attack - int for amount of damage the Werewolf does
-    '@param health - int for amount of health Werewolf has
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Constructor class for Werewolfs
+    #@param attack - int for amount of damage the Werewolf does
+    #@param health - int for amount of health Werewolf has
+    
     def __init__(self, attack):
         self.name = "Werewolf"
         self.health = 200
         self.attack = attack
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Weapon class that defines a weapon inheriets form object
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Weapon class that defines a weapon inheriets form object
 class Weapon(object):
 
     #string for name of the weapon
@@ -190,62 +179,51 @@ class Weapon(object):
     #int for how many uses you have left on a weapon
     uses = 1
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the weapons name
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the weapons name
     def get_name(self):
         return self.name
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the weapons attack mod
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the weapons attack mod
     def get_attack_mod(self):
         return self.attack_mod
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the amount of uses a weaopn
-    'has left
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the amount of uses a weaopn
+    #has left
+    
     def get_uses(self):
         return self.uses
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the weapons name to the inputted
-    'name
-    '
-    '@param string name - string to rename weapon
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+   
+    #Setter method that sets the weapons name to the inputted
+    #name
+    #@param string name - string to rename weapon
+    
     def set_name(self, name):
         self.name = name
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the weapons attack to the inputted
-    'int
-    '
-    '@param int attack_mod - what to set the attack mod to
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Setter method that sets the weapons attack to the inputted
+    #int
+    #@param int attack_mod - what to set the attack mod to
+    
     def set_attack_mod(self, attack_mod):
         self.attack_mod = attack_mod
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Setter method that sets the weapons number of uses to the
-    'inputted amount
-    '
-    '@param int uses - int for number of uses
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Setter method that sets the weapons number of uses to the
+    #inputted amount
+    #@param int uses - int for number of uses
     def set_uses(self, uses):
         self.uses = uses
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Helper method that takes one use off a weapon 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Helper method that takes one use off a weapon 
     def update_use(self):
         self.uses = self.uses - 1
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Hersheykiss class that inherits from weapon class and
-'defines a weapon as a Hershey kiss
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Hersheykiss class that inherits from weapon class and
+#defines a weapon as a Hershey kiss
 class HersheyKiss(Weapon):
     #defines the name of hershey kiss
     name = "hershey kiss"
@@ -254,10 +232,9 @@ class HersheyKiss(Weapon):
     #sets the uses
     uses = sys.maxsize
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'SourStraw class that inherits from weapon class and
-'defines a weapon as a sour straw
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#SourStraw class that inherits from weapon class and
+#defines a weapon as a sour straw
 class SourStraws(Weapon):
     #defines the name of sour straws
     name = "sour straw"
@@ -266,10 +243,8 @@ class SourStraws(Weapon):
     #defines uses to 2
     uses = 2
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'ChoclateBars class that inherits from weapon class and
-'defines a weapon as a chocolate bar
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+#ChoclateBars class that inherits from weapon class and
+#defines a weapon as a chocolate bar
 class ChocolateBars(Weapon):
     #defines the name of chocolate bars
     name = "chocolate bar"
@@ -278,10 +253,9 @@ class ChocolateBars(Weapon):
     #defines uses to 4
     uses = 4
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'NerdBombs class that inherits from weapon class and
-'defines a weapon as a nerd bomb
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#NerdBombs class that inherits from weapon class and
+#defines a weapon as a nerd bomb
 class NerdBombs(Weapon):
     #defines the name of nerd bombs
     name = "nerd bomb"
@@ -290,9 +264,8 @@ class NerdBombs(Weapon):
     #sets uses to 1
     uses = 1
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Player class that defines a player inherients from an object
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+#Player class that defines a player inherients from an object
 class Player(object):
     #randomly sets player health between 250 and 275
     hp = random.randint(250, 275)
@@ -335,28 +308,22 @@ class Player(object):
             weapon_list.append(nerdBombs)
             i = i - 1
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the players health(hp)
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Getter method that returns the players health(hp)
     def get_hp(self):
         return self.hp
     
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the players attack
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #Getter method that returns the players attack
     def get_attack(self):
         return self.attack
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Getter method that returns the weapons list
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Getter method that returns the weapons list
     def get_weapon_list(self):
         return self.weapon_list
     
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Method that attacks a monster and determines the amount
-    'of damage to do to them
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    #Method that attacks a monster and determines the amount
+    #of damage to do to them
     def p_attack(self, p_monster, p_weapon):
         #if its a hershy kiss they all take the same amount of
         #damage
@@ -419,34 +386,28 @@ class Player(object):
                 #updates monster
                 monster.update()
                 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Helper method that checks if a weapon is out of uses
-    'and removes it if its true
-    '
-    '@param weapon weapon to check if its passed in
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Helper method that checks if a weapon is out of uses
+    #and removes it if its true
+    #@param weapon weapon to check if its passed in
     def weapon_update(self, weapon):
         if w.get_uses() == 0:
             self.weapon_list.remove(weapon)
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Neighborhood class taht defines a neighborhood and fills it
-'with houses, inherints from object
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''    
+
+#Neighborhood class taht defines a neighborhood and fills it
+#with houses, inherints from object
 class Neighborhood(object):
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor class for neighborhood
-    '
-    '@param size - int for size of 2d array
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Constructor class for neighborhood
+    #param size - int for size of 2d array
     def __init__(self, size):
         self.size = size
         self.grid = [[0 for x in range(size)] for y in range(size)]
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Helper method that fills up the neighbor hood with houses
-    'and then fills the houses with monsters
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Helper method that fills up the neighbor hood with houses
+    #and then fills the houses with monsters
     def fill(self):
         for house in range(0, (self.size * self.size)):
             for x in range(0, self.size):
@@ -515,16 +476,13 @@ class Neighborhood(object):
 
                     
 
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Game class used to build the game
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+#Game class used to build the game
 class Game(object):
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Constructor method that defines everything for the game
-    '
-    '@param size - size to build the 2d array
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Constructor method that defines everything for the game
+    #@param size - size to build the 2d array
     def __init__(self, size):
         #sets size to inputted size
         self.size = size
@@ -540,12 +498,10 @@ class Game(object):
         #defines the location of player
         self.curr = self.nh.grid[self.x_pos][self.y_pos]
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Helper method to see if a move is valid and moves
-    ' the player if able
-    '
-    'param direct - string on where to go
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #Helper method to see if a move is valid and moves
+    #the player if able
+    #param direct - string on where to go
     def go(self, direct):
         #checks to see if direct is north
         if direct == "north":
@@ -590,23 +546,19 @@ class Game(object):
             else:
                 self.x_pos = self.x_pos - 1
                 self.curr = self.nh.grid[self.x_pos][self.y_pos]
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'helper method to attack players
-    '
-    '@param g_monster - monster to be attacked
-    '@param g_weapon - weapon to be attack with
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+                
+    #helper method to attack players
+    #@param g_monster - monster to be attacked
+    #@param g_weapon - weapon to be attack with
     def g_attack(self, g_monster, g_weapon):
         #checks to see if the monster is not a person
         if g_monster.get_name() != "Person":
             #calls player attack
             self.p.p_attack(g_monster, g_weapon)
 
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'helper method that removes a monster ands a person
-    '
-    '@param h_monster - monster to converted into a human
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    #helper method that removes a monster ands a person
+    #@param h_monster - monster to converted into a human
     def humanize(self, h_monster):
         #removes monster from house
         self.curr.remove_observer(h_monster)
@@ -615,9 +567,9 @@ class Game(object):
         #adds a person to thouse
         self.curr.add_observer(person)
         
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'helper method that prints the invtory of a player
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    
+    #helper method that prints the invtory of a player
+   
     def print_inv(self):
         #loops through the weapon_list of a player
         for item in self.p.get_weapon_list():
@@ -628,10 +580,9 @@ class Game(object):
             #prints item name and uses
             else:
                 print(item.get_name(), item.get_uses())
-                
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    'Method to see if you have won the game
-    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+             
+    #Method to see if you have won the game
     def check_won(self, nh):
         #count for number of cleared houses
         count = 0
